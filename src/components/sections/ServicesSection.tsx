@@ -1,5 +1,13 @@
+import Image from "next/image";
 import SectionTitle from "@/components/shared/SectionTitle";
 import { services } from "@/data/services";
+
+const serviceImages: Record<string, string> = {
+  s1: "/images/claning-services/building-management.webp",
+  s2: "/images/claning-services/cleaning-maintenance.webp",
+  s3: "/images/claning-services/rennovation.webp",
+  s4: "/images/claning-services/all-day-support.webp"
+};
 
 export default function ServicesSection() {
   return (
@@ -15,17 +23,28 @@ export default function ServicesSection() {
           {services.map((service, index) => (
             <article
               key={service.id}
-              className="rounded-2xl bg-white p-6 shadow-sm hover:shadow-card transition duration-300 hover:-translate-y-1"
+              className="rounded-2xl bg-white overflow-hidden border border-slate-100 shadow-sm hover:shadow-card transition duration-300 hover:-translate-y-1"
             >
-              <div className="flex items-center justify-between">
-                <div className="h-12 w-12 rounded-xl bg-brand/10 text-brand flex items-center justify-center text-2xl">
+              <div className="relative h-40">
+                <Image
+                  src={serviceImages[service.id]}
+                  alt={service.title}
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/20 to-transparent" />
+                <div className="absolute left-4 bottom-4 h-10 w-10 rounded-xl bg-white/90 text-brand flex items-center justify-center text-xl shadow-sm">
                   {service.icon}
                 </div>
-                <span className="text-xs tracking-[0.2em] text-muted">0{index + 1}</span>
               </div>
 
-              <h3 className="text-lg font-semibold text-slate-900 mt-5">{service.title}</h3>
-              <p className="text-slate-600 mt-2 leading-6">{service.description}</p>
+              <div className="p-5">
+                <div className="flex items-center justify-between">
+                <span className="text-xs tracking-[0.2em] text-muted">0{index + 1}</span>
+                </div>
+                <h3 className="text-lg font-semibold text-slate-900 mt-3">{service.title}</h3>
+                <p className="text-slate-600 mt-2 leading-6 text-sm">{service.description}</p>
+              </div>
             </article>
           ))}
         </div>

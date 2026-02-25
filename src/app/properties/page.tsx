@@ -17,7 +17,7 @@ function Filters({
   filters: PropertyFilters;
   setFilters: (filters: PropertyFilters) => void;
 }) {
-  const locations = ["All", ...Array.from(new Set(properties.map((property) => property.location)))];
+  const locations = ["All", "Limassol", "Paphos", "Nicosia", "Larnaka", "Famaqusta"];
   return (
     <div>
       <Select

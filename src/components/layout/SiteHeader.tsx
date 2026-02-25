@@ -48,7 +48,32 @@ export default function SiteHeader() {
           })}
         </nav>
 
-        <button className="md:hidden p-2 text-brand ml-auto" aria-label="Open menu" onClick={() => setOpen((v) => !v)}>
+        <a
+          href="https://wa.me/35797790825"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Open WhatsApp chat"
+          className="md:hidden ml-auto mr-2 inline-flex items-center justify-center rounded-lg bg-[#25D366] text-white p-2 shadow-sm"
+        >
+          <svg aria-hidden="true" viewBox="0 0 32 32" className="h-5 w-5 fill-current">
+            <path d="M19.11 17.2c-.29-.15-1.7-.84-1.96-.94-.26-.1-.45-.15-.64.15-.19.29-.73.94-.9 1.13-.16.19-.33.22-.62.07-.29-.15-1.22-.45-2.33-1.43-.86-.76-1.44-1.7-1.61-1.99-.16-.29-.02-.45.12-.6.13-.13.29-.33.44-.49.15-.16.19-.29.29-.49.1-.19.05-.36-.02-.51-.07-.15-.64-1.53-.88-2.09-.23-.55-.47-.47-.64-.48h-.55c-.19 0-.49.07-.75.36-.26.29-.98.96-.98 2.35s1 2.74 1.14 2.93c.15.19 1.96 2.99 4.75 4.19.66.28 1.17.44 1.57.56.66.21 1.26.18 1.73.11.53-.08 1.7-.69 1.94-1.35.24-.66.24-1.22.17-1.34-.07-.12-.26-.19-.55-.34Z" />
+            <path d="M16 .53C7.45.53.53 7.45.53 16c0 2.82.76 5.57 2.2 7.98L.5 31.47l7.71-2.16A15.4 15.4 0 0 0 16 31.47c8.55 0 15.47-6.92 15.47-15.47S24.55.53 16 .53Zm0 28.11c-2.35 0-4.66-.63-6.68-1.83l-.48-.28-4.58 1.28 1.22-4.46-.31-.51a12.57 12.57 0 0 1-1.93-6.84c0-6.96 5.67-12.63 12.63-12.63S28.5 9.04 28.5 16 22.96 28.64 16 28.64Z" />
+          </svg>
+        </a>
+
+        <a
+          href="tg://resolve?phone=35797790825"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="Open Telegram"
+          className="md:hidden mr-2 inline-flex items-center justify-center rounded-lg bg-[#229ED9] text-white p-2 shadow-sm"
+        >
+          <svg aria-hidden="true" viewBox="0 0 24 24" className="h-5 w-5 fill-current">
+            <path d="M9.78 15.17l-.4 5.61c.58 0 .84-.25 1.15-.55l2.75-2.63 5.7 4.18c1.04.58 1.78.28 2.06-.96l3.73-17.47h.01c.33-1.54-.56-2.14-1.58-1.76L1.43 9.42c-1.48.58-1.46 1.4-.25 1.77l5.57 1.74L19.68 5.1c.61-.4 1.17-.18.71.22" />
+          </svg>
+        </a>
+
+        <button className="md:hidden p-2 text-brand" aria-label="Open menu" onClick={() => setOpen((v) => !v)}>
           ☰
         </button>
       </div>

@@ -13,7 +13,7 @@ export default function AboutPage() {
 
         <article className="bg-white border border-slate-100 rounded-2xl p-6 shadow-card">
           <p className="text-slate-700 leading-7">
-            EstateJack is a full-service real estate and property management company helping owners, buyers and tenants
+            Kaja Management LTD is a full-service real estate and property management company helping owners, buyers and tenants
             make better property decisions. Our team focuses on transparent communication, strong execution and
             long-term value creation.
           </p>

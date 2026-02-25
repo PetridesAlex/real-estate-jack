@@ -6,7 +6,7 @@ import SiteFooter from "@/components/layout/SiteFooter";
 import Preloader from "@/components/layout/Preloader";
 
 export const metadata: Metadata = {
-  title: "EstateJack | Premium Real Estate",
+  title: "Kaja Management LTD | Premium Real Estate",
   description: "Modern real estate and management website.",
   icons: {
     icon: "/images/logo/property-needs-logo.webp",

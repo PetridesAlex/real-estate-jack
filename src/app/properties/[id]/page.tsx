@@ -4,7 +4,8 @@ import { notFound } from "next/navigation";
 import PageContainer from "@/components/layout/PageContainer";
 import AgentCard from "@/components/shared/AgentCard";
 import MapPreview from "@/components/shared/MapPreview";
-import PropertyCard from "@/components/shared/PropertyCard";
+import PropertyImageGallery from "@/components/shared/PropertyImageGallery";
+import RequestViewingButton from "@/components/shared/RequestViewingButton";
 import SectionTitle from "@/components/shared/SectionTitle";
 import { agents } from "@/data/agents";
 import { properties } from "@/data/properties";
@@ -16,27 +17,16 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
   if (!property) return notFound();
 
   const agent = agents.find((item) => item.id === property.agentId);
-  const similarProperties = properties
-    .filter((item) => item.id !== resolvedParams.id && item.type === property.type)
-    .slice(0, 3);
+  const sameTypeProperties = properties.filter((item) => item.id !== resolvedParams.id && item.type === property.type);
+  const fallbackProperties = properties.filter((item) => item.id !== resolvedParams.id);
+  const similarProperties = (sameTypeProperties.length > 0 ? sameTypeProperties : fallbackProperties).slice(0, 3);
 
   return (
     <PageContainer>
       <section className="mt-8">
         <SectionTitle eyebrow="Property Detail" title={property.title} subtitle={`${property.location} · ${property.type}`} />
 
-        <div className="grid grid-flow-col auto-cols-[320px] gap-3 overflow-x-auto pb-2">
-          {property.images.map((image) => (
-            <Image
-              key={image}
-              src={image}
-              alt={property.title}
-              width={320}
-              height={220}
-              className="w-[320px] h-[220px] rounded-2xl object-cover"
-            />
-          ))}
-        </div>
+        <PropertyImageGallery images={property.images} title={property.title} />
 
         <article className="bg-white border border-slate-100 rounded-2xl p-6 shadow-card mt-6">
           <div className="flex flex-wrap gap-4">
@@ -56,9 +46,9 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
           </div>
 
           <div className="flex flex-wrap gap-3 mt-6">
-            <button className="rounded-xl px-5 py-3 min-h-12 font-semibold bg-brand text-white">Request viewing</button>
+            <RequestViewingButton propertyTitle={property.title} />
             <a
-              href="https://wa.me/15551002000"
+              href="https://wa.me/35797790825"
               target="_blank"
               className="rounded-xl px-5 py-3 min-h-12 font-semibold bg-white border border-slate-300 text-slate-900"
             >
@@ -81,9 +71,35 @@ export default async function PropertyDetailPage({ params }: { params: Promise<{
 
         <section className="mt-10">
           <SectionTitle eyebrow="Similar Properties" title="You may also like" />
-          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-3">
+          <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-4">
             {similarProperties.map((item) => (
-              <PropertyCard key={item.id} property={item} />
+              <Link key={item.id} href={`/properties/${item.id}`} aria-label={`Open property ${item.title}`}>
+                <article className="relative overflow-hidden rounded-3xl min-h-[300px] md:min-h-[340px] shadow-card group">
+                  <Image
+                    src={item.images[0]}
+                    alt={item.title}
+                    fill
+                    className="object-cover transition duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0f172acc] via-[#0f172a80] to-transparent" />
+                  <div className="absolute top-4 left-4 rounded-full bg-white/85 px-3 py-1 text-xs font-semibold text-slate-800">
+                    {item.type}
+                  </div>
+                  <div className="relative z-10 h-full p-5 md:p-6 flex flex-col justify-end">
+                    <p className="text-white/85 text-sm">
+                      {item.location} · {item.areaSqm} sqm
+                    </p>
+                    <h3 className="text-white text-xl md:text-2xl font-semibold mt-1">{item.title}</h3>
+                    <div className="mt-3 flex items-center justify-between gap-3">
+                      <p className="text-white text-xl font-bold">{formatCurrency(item.price)}</p>
+                      <p className="text-white/85 text-sm">
+                        {item.beds > 0 ? `${item.beds} Beds · ` : ""}
+                        {item.baths} Baths
+                      </p>
+                    </div>
+                  </div>
+                </article>
+              </Link>
             ))}
           </div>
         </section>

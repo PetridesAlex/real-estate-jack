@@ -1,4 +1,4 @@
-# Real Estate Jack
+# Kaja Management LTD
 
 Production-ready responsive real-estate website built with Next.js, TypeScript, and Tailwind CSS.
 

@@ -69,25 +69,99 @@ select {
 }
 
 .preloader-wordmark {
-  animation: preloaderWordmark 900ms ease-out both;
+  animation: preloaderWordmark 850ms ease-out both;
+}
+
+.preloader-logo-wrap {
+  animation: preloaderLogoIn 850ms ease-out both;
+}
+
+.preloader-logo {
+  filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.35));
+}
+
+.preloader-subtext {
+  animation: preloaderSubtext 900ms ease-out 120ms both;
 }
 
 .preloader-progress {
-  animation: preloaderProgress 1.2s ease-in-out infinite;
+  animation: preloaderProgress 1.35s ease-in-out infinite;
 }
 
-.preloader-pulse {
-  animation: preloaderPulse 1.8s ease-in-out infinite;
+.preloader-shell {
+  background: radial-gradient(circle at 50% 45%, #2a3140 0%, #141a24 42%, #0e131b 100%);
+}
+
+.preloader-grid-overlay {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: radial-gradient(circle at center, black 20%, transparent 75%);
+  animation: preloaderGrid 5.5s linear infinite;
+}
+
+.preloader-core-glow {
+  background: radial-gradient(circle, rgba(176, 138, 87, 0.28) 0%, rgba(31, 90, 74, 0.2) 45%, transparent 72%);
+  animation: preloaderGlow 2.4s ease-in-out infinite;
+}
+
+.preloader-ring {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.preloader-ring-1 {
+  animation: preloaderSpin 3s linear infinite;
+}
+
+.preloader-ring-2 {
+  animation: preloaderSpinReverse 4.2s linear infinite;
+}
+
+.preloader-dot-1 {
+  animation: preloaderDot 1.2s ease-in-out infinite;
+}
+
+.preloader-dot-2 {
+  animation: preloaderDot 1.2s ease-in-out 0.15s infinite;
+}
+
+.preloader-dot-3 {
+  animation: preloaderDot 1.2s ease-in-out 0.3s infinite;
 }
 
 @keyframes preloaderWordmark {
   from {
     opacity: 0;
-    transform: translateY(16px) scale(0.98);
+    transform: translateY(14px) scale(0.985);
   }
   to {
     opacity: 1;
     transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes preloaderLogoIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes preloaderSubtext {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
@@ -100,14 +174,58 @@ select {
   }
 }
 
-@keyframes preloaderPulse {
+@keyframes preloaderGlow {
   0%,
   100% {
-    opacity: 0.25;
+    opacity: 0.5;
     transform: scale(0.98);
   }
   50% {
-    opacity: 0.6;
-    transform: scale(1.04);
+    opacity: 0.8;
+    transform: scale(1.05);
   }
+}
+
+@keyframes preloaderSpin {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+@keyframes preloaderSpinReverse {
+  0% {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+}
+
+@keyframes preloaderDot {
+  0%,
+  100% {
+    opacity: 0.35;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-4px);
+  }
+}
+
+@keyframes preloaderGrid {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(28px);
+  }
+}
+
+/* Hide Next.js dev portal host from the rendered page surface */
+nextjs-portal {
+  display: none !important;
 }
