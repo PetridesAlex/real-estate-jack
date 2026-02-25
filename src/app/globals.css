@@ -1,0 +1,113 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  background: radial-gradient(circle at top right, #f8f5ee 0%, #f4f1ea 40%, #eef2ef 100%);
+  color: #1f2937;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display), serif;
+}
+
+p,
+a,
+button,
+label,
+input,
+textarea,
+select {
+  font-family: var(--font-body), sans-serif;
+}
+
+::selection {
+  background: rgba(176, 138, 87, 0.25);
+  color: #1f2937;
+}
+
+.hero-surface {
+  animation: heroZoom 14s ease-out both;
+}
+
+.hero-fade-in-up {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroFadeUp 800ms ease-out 120ms forwards;
+}
+
+.hero-fade-in-up-delay-1 {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroFadeUp 800ms ease-out 260ms forwards;
+}
+
+.hero-fade-in-up-delay-2 {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroFadeUp 800ms ease-out 380ms forwards;
+}
+
+@keyframes heroFadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes heroZoom {
+  from {
+    background-size: 112%;
+  }
+  to {
+    background-size: 100%;
+  }
+}
+
+.preloader-wordmark {
+  animation: preloaderWordmark 900ms ease-out both;
+}
+
+.preloader-progress {
+  animation: preloaderProgress 1.2s ease-in-out infinite;
+}
+
+.preloader-pulse {
+  animation: preloaderPulse 1.8s ease-in-out infinite;
+}
+
+@keyframes preloaderWordmark {
+  from {
+    opacity: 0;
+    transform: translateY(16px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes preloaderProgress {
+  0% {
+    transform: translateX(-110%);
+  }
+  100% {
+    transform: translateX(250%);
+  }
+}
+
+@keyframes preloaderPulse {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(0.98);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.04);
+  }
+}
