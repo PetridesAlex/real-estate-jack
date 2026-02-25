@@ -62,7 +62,7 @@ export default function ContactCTASection() {
         title="Let Us Help You Move Forward"
         subtitle="Share your requirements and our team will prepare a tailored property or service recommendation."
       />
-      <div className="grid lg:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 gap-6">
         <div className="bg-white border border-slate-100 rounded-2xl p-5 md:p-6 shadow-card">
           <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#eef7f3] via-white to-[#eef4ff] p-5 md:p-6 mb-5 border border-slate-100 shadow-sm">
             <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-accent via-secondary to-[#229ED9]" />
@@ -200,7 +200,9 @@ export default function ContactCTASection() {
           </PrimaryButton>
           {ok ? <p className="text-emerald-700 text-sm mt-2">{ok}</p> : null}
         </div>
-        <MapPreview />
+        <div>
+          <MapPreview />
+        </div>
       </div>
     </section>
   );
