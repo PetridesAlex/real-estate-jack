@@ -7,7 +7,12 @@ import Preloader from "@/components/layout/Preloader";
 
 export const metadata: Metadata = {
   title: "EstateJack | Premium Real Estate",
-  description: "Modern real estate and management website."
+  description: "Modern real estate and management website.",
+  icons: {
+    icon: "/images/logo/property-needs-logo.webp",
+    shortcut: "/images/logo/property-needs-logo.webp",
+    apple: "/images/logo/property-needs-logo.webp"
+  }
 };
 
 const bodyFont = Manrope({
